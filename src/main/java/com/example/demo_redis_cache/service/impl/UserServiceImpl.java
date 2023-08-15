@@ -15,28 +15,33 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserEntity addUser(UserVO userVO) {
-        if (!Objects.isNull(userVO)) {
-            UserEntity user = new UserEntity();
-            user.setId(UUID.randomUUID().toString());
-            user.setFirstName(userVO.getFirstName());
-            user.setLastName(userVO.getLastName());
-            user.setAge(userVO.getAge());
-            user.setSex(userVO.getSex());
+        UserEntity user = new UserEntity();
+        user.setId(UUID.randomUUID().toString());
+        user.setFirstName(userVO.getFirstName());
+        user.setLastName(userVO.getLastName());
+        user.setAge(userVO.getAge());
+        user.setSex(userVO.getSex());
 
-            userRepository.saveUser(user);
+        userRepository.saveUser(user);
 
-            return user;
-        }
-        return null;
+        return user;
     }
 
     @Override
     public UserEntity findUserById(String id) {
-        return userRepository.findUserById(id);
+        UserEntity userEntity = userRepository.findUserById(id);
+        if (!Objects.isNull(userEntity)) {
+            return userEntity;
+        }
+        return null;
     }
 
     @Override
@@ -51,6 +56,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity updateUser(UserVO userVO, String id) {
-        return userRepository.updateUser(userVO,id);
+        UserEntity userEntity = userRepository.updateUser(userVO,id);
+        if (!Objects.isNull(userEntity)) {
+            return userEntity;
+        }
+        return null;
     }
 }

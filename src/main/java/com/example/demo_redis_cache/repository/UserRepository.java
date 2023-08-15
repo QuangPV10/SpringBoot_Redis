@@ -55,7 +55,6 @@ public class UserRepository {
             hashOperations.put(Constant.CACHE_KEY,id,user);
             return user;
         }
-
       return null;
     }
 
