@@ -6,8 +6,4 @@ public class NotFoundException extends MyException {
         super(message, errorCode);
     }
 
-    public NotFoundException(String message, Long errorCode, Object ... arguments) {
-        super(message, errorCode, arguments);
-    }
-    
 }

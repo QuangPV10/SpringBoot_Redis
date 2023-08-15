@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo_redis_cache.exception.BadRequestException;
-import com.example.demo_redis_cache.exception.InteralServerException;
+import com.example.demo_redis_cache.exception.InternalServerException;
 import com.example.demo_redis_cache.exception.MyException;
 import com.example.demo_redis_cache.exception.NotFoundException;
 import com.example.demo_redis_cache.exception.ValidationException;
@@ -28,8 +28,8 @@ public class RestExceptionHandler {
     }
 
     @ResponseBody
-    @ExceptionHandler(InteralServerException.class)
-    public ResponseEntity<Object> handleException(InteralServerException interalServerException) {
+    @ExceptionHandler(InternalServerException.class)
+    public ResponseEntity<Object> handleException(InternalServerException interalServerException) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(interalServerException.getMessage());
     }
 

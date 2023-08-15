@@ -2,7 +2,7 @@ package com.example.demo_redis_cache.controller;
 
 import com.example.demo_redis_cache.constant.Constant;
 import com.example.demo_redis_cache.entity.UserEntity;
-import com.example.demo_redis_cache.exception.InteralServerException;
+import com.example.demo_redis_cache.exception.InternalServerException;
 import com.example.demo_redis_cache.exception.NotFoundException;
 import com.example.demo_redis_cache.service.UserService;
 import com.example.demo_redis_cache.vo.UserVO;
@@ -46,7 +46,7 @@ public class UserController {
     public ResponseEntity<String> deleteUser(@PathVariable String id){
         boolean result = userService.deleteUser(id);
         if (!result) {
-            throw new InteralServerException(Constant.NOT_FOUND + id, 1L);
+            throw new InternalServerException(Constant.NOT_FOUND + id, 1L);
         }
         return ResponseEntity.ok(Constant.DELETE + id + Constant.SUCCESS);
     }

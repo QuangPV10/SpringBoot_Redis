@@ -6,9 +6,4 @@ public class BadRequestException extends MyException {
         super(message, errorCode);
     }
 
-    
-    public BadRequestException(String message, Long errorCode, Object ... arguments) {
-        super(message, errorCode, arguments);
-    }
-    
 }
