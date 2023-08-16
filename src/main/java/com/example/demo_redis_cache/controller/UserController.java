@@ -51,7 +51,7 @@ public class UserController {
         return ResponseEntity.ok(Constant.DELETE + id + Constant.SUCCESS);
     }
 
-    @PutMapping("user/{id}")
+    @PutMapping("/user/{id}")
     public ResponseEntity<UserEntity> updateUser(@Valid @RequestBody UserVO userVO, @PathVariable String id) {
         UserEntity userEntity = userService.updateUser(userVO,id);
         if (Objects.isNull(userEntity)) {
