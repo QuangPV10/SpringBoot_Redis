@@ -32,7 +32,7 @@ public class UserController {
     public ResponseEntity<UserEntity> getUserById(@PathVariable String id) {
         UserEntity userEntity = userService.findUserById(id);
         if (Objects.isNull(userEntity)) {
-            throw new NotFoundException(Constant.NOT_FOUND + id, 1L);
+            throw new NotFoundException(Constant.NOT_FOUND + id);
         }
         return ResponseEntity.ok(userEntity);
     }
@@ -46,7 +46,7 @@ public class UserController {
     public ResponseEntity<String> deleteUser(@PathVariable String id){
         boolean result = userService.deleteUser(id);
         if (!result) {
-            throw new InternalServerException(Constant.NOT_FOUND + id, 1L);
+            throw new InternalServerException(Constant.NOT_FOUND + id);
         }
         return ResponseEntity.ok(Constant.DELETE + id + Constant.SUCCESS);
     }
@@ -55,7 +55,7 @@ public class UserController {
     public ResponseEntity<UserEntity> updateUser(@Valid @RequestBody UserVO userVO, @PathVariable String id) {
         UserEntity userEntity = userService.updateUser(userVO,id);
         if (Objects.isNull(userEntity)) {
-            throw new NotFoundException(Constant.NOT_FOUND + id, 1L);
+            throw new NotFoundException(Constant.NOT_FOUND + id);
         }
         return ResponseEntity.ok(userEntity);
 
