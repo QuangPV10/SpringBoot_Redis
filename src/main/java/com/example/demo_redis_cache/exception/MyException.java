@@ -4,11 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class MyException extends RuntimeException {
-    private final transient String message;
-    private final transient Long errorCode;
+    private final String message;
 
-    public MyException(final String message, final Long errorCode) {
-        this.errorCode = errorCode;
+    public MyException(final String message) {
         this.message = message;
     }
 
