@@ -26,7 +26,6 @@ class UserServiceImplTest {
 
     @Test
     void testAddUser() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         UserEntity user = userService.addUser(mockUserVO());
@@ -35,7 +34,6 @@ class UserServiceImplTest {
 
     @Test
     void testFindUserById() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         Mockito.when(userRepository.findUserById(ID)).thenReturn(mockUserEntity2());
@@ -47,7 +45,6 @@ class UserServiceImplTest {
 
     @Test
     void testFindUserById_Null() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         Mockito.when(userRepository.findUserById(ID)).thenReturn(null);
@@ -59,7 +56,6 @@ class UserServiceImplTest {
 
     @Test
     void testFindAllUsers() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         List<UserEntity> userEntities = new ArrayList<>();
@@ -75,15 +71,14 @@ class UserServiceImplTest {
 
     @Test
     void testDeleteUser() {
-        userService = new UserServiceImpl(userRepository);
         Mockito.when(userService.deleteUser(ID)).thenReturn(true);
-       boolean result = userService.deleteUser(ID);
+
+        boolean result = userService.deleteUser(ID);
         Assertions.assertTrue(result);
     }
 
     @Test
     void testDeleteUser_Fail() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         Mockito.when(userRepository.deleteUser(ID)).thenReturn(false);
@@ -94,7 +89,6 @@ class UserServiceImplTest {
 
     @Test
     void testUpdateUser() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         Mockito.when(userRepository.updateUser(mockUserVO(),ID)).thenReturn(mockUserEntity2());
@@ -106,7 +100,6 @@ class UserServiceImplTest {
 
     @Test
     void testUpdateUser_Null() {
-        userRepository = Mockito.mock(UserRepository.class);
         userService = new UserServiceImpl(userRepository);
 
         Mockito.when(userRepository.updateUser(mockUserVO(),ID)).thenReturn(null);
